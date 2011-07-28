@@ -11,8 +11,8 @@ NetworkSlave slave;
 DisplayController dc("name");
 LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-BounceButton reserve(2);
-//BounceButton cancel(3);
+BounceButton reserve(1);
+BounceButton cancel(2);
 
 int check;
 
@@ -36,14 +36,12 @@ void loop() {
   lcd.print(slave.getDisplayString());
   
   if (reserve.check()) {
-    check++;
-    lcd.print(check);
-//    slave.reserve();
+    slave.reserve();
   }
   
-//  if (cancel.check()) {
-//    slave.cancel();
-//  }
+  if (cancel.check()) {
+    slave.cancel();
+  }
   
 }
 
